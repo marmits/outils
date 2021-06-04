@@ -1,4 +1,12 @@
 <?php
+$rep = '/'.basename(__dir__).'/';
+set_include_path($_SERVER["DOCUMENT_ROOT"].$rep);
+error_reporting(E_ALL|E_STRICT);
+ini_set('display_errors', 1);
+date_default_timezone_set('Europe/Paris');
+
+
+$titre = "Supprimer les doublons d'un tableau multidimensionnel \$tab";
 function multi_unique($array) {
 	foreach ($array as $k=>$na)
 	    $new[$k] = serialize($na);
@@ -27,11 +35,15 @@ $tab[9] = [30 => "value3"];
 
 
 <html>
+<head>
+	<title><?php echo $titre; ?></title>
+	</head>
 <body>
 
 
-<h1>supprimer les doublons d'un tableau multidimensionnel $tab</h1>
-<h2>tableau origine</h2>
+<h1><?php echo $titre; ?></h1>
+<hr>
+<h2>tableau origine $tab</h2>
 <?php
 foreach($tab as $ligne){
 	print_r($ligne);
@@ -74,7 +86,7 @@ foreach($results as $lignes => $item){
 }
 print_r($data);
 ?>
-
+<hr>
 
 </html>
 </body>
